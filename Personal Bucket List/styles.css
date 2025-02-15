@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    color: #333;
+}
+
+header {
+    background: #ff6f61;
+    padding: 20px;
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.bucket-list li {
+    font-size: 1.5rem;
+    padding: 10px;
+    margin: 10px auto;
+    width: 80%;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+footer {
+    background: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .bucket-list li {
+        width: 90%;
+        font-size: 1.2rem;
+    }
+}
