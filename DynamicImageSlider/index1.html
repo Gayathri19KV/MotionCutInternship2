@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f5f5f5; }
+        .slider-container { position: relative; width: 100%; max-width: 1000px; overflow: hidden; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); }
+        .slides { display: flex; transition: transform 0.5s ease-in-out; }
+        .slides img { width: 100vw; height: 100vh; object-fit: cover; }
+        .nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; cursor: pointer; padding: 10px; }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        .thumbnails { display: flex; justify-content: center; margin-top: 10px; }
+        .thumbnail { width: 50px; height: 50px; margin: 5px; cursor: pointer; opacity: 0.7; transition: 0.3s; }
+        .thumbnail:hover, .active { opacity: 1; }
+        .caption { text-align: center; font-size: 18px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <img src="image3.jpg" alt="Image 3">
+            <img src="image4.jpg" alt="Image 4">
+            <img src="image5.jpg" alt="Image 5">
+        </div>
+        <button class="nav prev">&#10094;</button>
+        <button class="nav next">&#10095;</button>
+    </div>
+    <div class="caption">Image 1</div>
+    <div class="thumbnails">
+        <img src="image1.jpg" class="thumbnail active" onclick="showSlide(0)">
+        <img src="image2.jpg" class="thumbnail" onclick="showSlide(1)">
+        <img src="image3.jpg" class="thumbnail" onclick="showSlide(2)">
+        <img src="image4.jpg" class="thumbnail" onclick="showSlide(3)">
+        <img src="image5.jpg" class="thumbnail" onclick="showSlide(4)">
+    </div>
+    <script>
+        let index = 0;
+        const slides = document.querySelector('.slides');
+        const images = document.querySelectorAll('.slides img');
+        const captions = ["Image 1", "Image 2", "Image 3", "Image 4", "Image 5"];
+        const captionText = document.querySelector('.caption');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        
+        function showSlide(n) {
+            index = n;
+            slides.style.transform = `translateX(${-index * 100}vw)`;
+            captionText.textContent = captions[index];
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            thumbnails[index].classList.add('active');
+        }
+        
+        document.querySelector('.prev').addEventListener('click', () => {
+            index = (index === 0) ? images.length - 1 : index - 1;
+            showSlide(index);
+        });
+        
+        document.querySelector('.next').addEventListener('click', () => {
+            index = (index === images.length - 1) ? 0 : index + 1;
+            showSlide(index);
+        });
+        
+        setInterval(() => {
+            index = (index + 1) % images.length;
+            showSlide(index);
+        }, 3000);
+    </script>
+</body>
+</html>
