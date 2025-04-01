@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    transition: background-color 0.5s ease;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.mood-buttons {
+    display: flex;
+    gap: 15px;
+}
+.mood-buttons button {
+    font-size: 24px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+.mood-buttons button:hover {
+    transform: scale(1.1);
+}
+#history {
+    margin-top: 20px;
+    padding: 10px;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+.dark-mode {
+    background-color: #333;
+    color: white;
+}
